@@ -1,0 +1,67 @@
+$Id: ChangeLog.Amiga,v 1.6 2010/06/12 20:17:41 diegocr Exp $
+
+2010-07-12  Wget 1.12 - Revision #2
+	
+	* src/connect.c: Fixed connect_to_ip() function to
+	  report correct message on failed connections.
+	
+	* src/utils.c: Changed the following functions to do things
+	  on an amiga-only way using dos.library equivalents: suffix(),
+	  determine_screen_width(), xsleep(), make_directory(),
+	  file_exists_p()
+	
+	* src/host.c: Reworked gethostbyname_with_timeout() to directly
+	  handle our TCP/IP Stack's gethostbyname() disabling C linklib
+	  SIGINT signal in the meanwhile and using Exec's way...
+	
+	* src/openssl.c: Changed close() by CloseSocket()..
+	
+	* src/log.c: avoid fclose() over stderr
+	
+	* OS3 Build Compiled using OpenSSL 1.0.0a (Rev#2)
+	
+	* Fixed CTRL+C handling under OS4 - Thanks to Corto for the fix!
+
+2009-11-22  Wget 1.12
+
+	* URLs in file's comments are now unescaped (eg: %7e -> ~)
+	
+	* For the first time, added an AmigaOS4 build.
+	
+	* Compiled using OpenSSL 1.0.0-beta4, download it from
+	  http://amiga.sourceforge.net/ if you want SSL support
+	  in Wget - OS4 users need to have AmiSSL installed.
+	
+	Both os3/os4 builds includes our Amiga-only changes made 
+	to previous Wget versions, of course.
+
+2005-10-20  Wget v1.10.2
+	
+	* Just a rebuild of this new version applying latest changes 
+	  from Wget 1.9.x
+	
+2004-05-30  Wget v1.9.1 - Revision #3
+
+	* Applyed dotfiles patch:
+	  http://www.unixwiz.net/patches/wget-1.9.1-dotfiles-patch.txt
+	* Fixed a trouble by using 'long long', changed to ULONG.
+	* Added 'amiga' and 'amiga-strict' to supported OS's when using
+	  --restrict-file-names, to avoid ":/*" and ":;/|*?"(>][<)`~#%$"
+	  respectively. (By default: 'amiga')
+	* Added option --max-filename-length, useful when using wget on 
+	  FFS partitions. (When the max length is reached, a CRC16 
+	  checksum of the full URL will be appended to the filename to 
+	  ensure futher problems do not happens)...
+	* Added option --no-file-comments
+	* Compiled with gcc v3.3.3
+	
+2003-12-15  Wget v1.9.1 - Revision #2
+
+	* Made it Native, (without ixemul)
+	* default config file "~/.wgetrc" is now loaded as/from "env:wgetcfg"
+	* Added avility to set file comments.
+
+2003-11-15  Wget v1.9.1
+
+	* Just a IXemul compilation
+
